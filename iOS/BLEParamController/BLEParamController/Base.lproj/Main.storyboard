@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,134 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BLEParamController" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DYO-HI-3pe">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8R-Rp-Apb" userLabel="TitleView">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="163.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLE Param Control" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zr7-U6-HrR">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="163.5"/>
+                                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="32"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="zr7-U6-HrR" firstAttribute="centerY" secondItem="o8R-Rp-Apb" secondAttribute="centerY" id="8Px-Tu-CxM"/>
+                                            <constraint firstItem="zr7-U6-HrR" firstAttribute="height" secondItem="o8R-Rp-Apb" secondAttribute="height" id="aWq-gw-Zsf"/>
+                                            <constraint firstItem="zr7-U6-HrR" firstAttribute="centerX" secondItem="o8R-Rp-Apb" secondAttribute="centerX" id="l5m-ny-Gdg"/>
+                                            <constraint firstItem="zr7-U6-HrR" firstAttribute="width" secondItem="o8R-Rp-Apb" secondAttribute="width" id="pve-My-aj2"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XB-rA-TNe" userLabel="Slider1View">
+                                        <rect key="frame" x="0.0" y="163.5" width="414" height="163.5"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4yt-ia-6hn" userLabel="HSlider1">
+                                                <rect key="frame" x="101.5" y="67" width="211" height="31"/>
+                                                <connections>
+                                                    <action selector="ParamSlider1Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="LYq-Ja-q0Y"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="4yt-ia-6hn" firstAttribute="width" secondItem="9XB-rA-TNe" secondAttribute="width" multiplier="0.5" id="2c8-Kw-E7D"/>
+                                            <constraint firstItem="4yt-ia-6hn" firstAttribute="centerY" secondItem="9XB-rA-TNe" secondAttribute="centerY" id="RQr-7q-SWo"/>
+                                            <constraint firstItem="4yt-ia-6hn" firstAttribute="centerX" secondItem="9XB-rA-TNe" secondAttribute="centerX" id="o2d-HF-nnT"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imU-GU-VIO" userLabel="Slider2View">
+                                        <rect key="frame" x="0.0" y="327" width="414" height="164"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nhs-6L-6po" userLabel="HSlider2">
+                                                <rect key="frame" x="101.5" y="67" width="211" height="31"/>
+                                                <connections>
+                                                    <action selector="ParamSlider2Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="Vrh-vY-MZn"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="nhs-6L-6po" firstAttribute="centerY" secondItem="imU-GU-VIO" secondAttribute="centerY" id="EUh-T1-K93"/>
+                                            <constraint firstItem="nhs-6L-6po" firstAttribute="width" secondItem="imU-GU-VIO" secondAttribute="width" multiplier="0.5" id="Zhp-5h-5tq"/>
+                                            <constraint firstItem="nhs-6L-6po" firstAttribute="centerX" secondItem="imU-GU-VIO" secondAttribute="centerX" id="vGb-iU-OoZ"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOe-kH-FcJ" userLabel="Slider3View">
+                                        <rect key="frame" x="0.0" y="491" width="414" height="163.5"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="HjO-bI-RAO" userLabel="HSlider3">
+                                                <rect key="frame" x="101.5" y="66.5" width="211" height="31"/>
+                                                <connections>
+                                                    <action selector="ParamSlider3Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="Tq8-Qr-oae"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="HjO-bI-RAO" firstAttribute="centerX" secondItem="qOe-kH-FcJ" secondAttribute="centerX" id="7K1-B6-jCd"/>
+                                            <constraint firstItem="HjO-bI-RAO" firstAttribute="centerY" secondItem="qOe-kH-FcJ" secondAttribute="centerY" id="l6F-bp-O23"/>
+                                            <constraint firstItem="HjO-bI-RAO" firstAttribute="width" secondItem="qOe-kH-FcJ" secondAttribute="width" multiplier="0.5" id="pmX-My-5Gp"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ls5-Pk-Sh5" userLabel="ButtonView">
+                                        <rect key="frame" x="0.0" y="654.5" width="414" height="163.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znc-0f-2BK">
+                                                <rect key="frame" x="160" y="60.5" width="94" height="42"/>
+                                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="26"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="ParamButtonChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4CW-cm-rHv"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="znc-0f-2BK" firstAttribute="centerY" secondItem="Ls5-Pk-Sh5" secondAttribute="centerY" id="60U-0x-DFG"/>
+                                            <constraint firstItem="znc-0f-2BK" firstAttribute="centerX" secondItem="Ls5-Pk-Sh5" secondAttribute="centerX" id="esz-VJ-e5r"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="9XB-rA-TNe" firstAttribute="width" secondItem="DYO-HI-3pe" secondAttribute="width" id="5mK-q7-lWm"/>
+                                    <constraint firstItem="qOe-kH-FcJ" firstAttribute="width" secondItem="DYO-HI-3pe" secondAttribute="width" id="Pq7-u6-Y3i"/>
+                                    <constraint firstItem="o8R-Rp-Apb" firstAttribute="width" secondItem="DYO-HI-3pe" secondAttribute="width" id="TIu-Tv-cUm"/>
+                                    <constraint firstItem="o8R-Rp-Apb" firstAttribute="height" secondItem="9XB-rA-TNe" secondAttribute="height" id="fBv-Vh-l9k"/>
+                                    <constraint firstItem="Ls5-Pk-Sh5" firstAttribute="height" secondItem="9XB-rA-TNe" secondAttribute="height" id="fwb-jH-2AZ"/>
+                                    <constraint firstItem="imU-GU-VIO" firstAttribute="width" secondItem="DYO-HI-3pe" secondAttribute="width" id="mpU-cs-yRj"/>
+                                    <constraint firstItem="imU-GU-VIO" firstAttribute="height" secondItem="9XB-rA-TNe" secondAttribute="height" id="rz0-7C-SP2"/>
+                                    <constraint firstItem="Ls5-Pk-Sh5" firstAttribute="width" secondItem="DYO-HI-3pe" secondAttribute="width" id="wxO-En-BGO"/>
+                                    <constraint firstItem="qOe-kH-FcJ" firstAttribute="height" secondItem="9XB-rA-TNe" secondAttribute="height" id="xey-sy-h5B"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DYO-HI-3pe" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="0yh-sC-ZkQ"/>
+                            <constraint firstItem="DYO-HI-3pe" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="LUw-bK-4UY"/>
+                            <constraint firstItem="DYO-HI-3pe" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="VhX-fg-2a8"/>
+                            <constraint firstItem="DYO-HI-3pe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="yVm-1l-ZU3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="paramButton" destination="znc-0f-2BK" id="ooE-OM-StO"/>
+                        <outlet property="paramSlider1" destination="4yt-ia-6hn" id="jFD-7T-aoo"/>
+                        <outlet property="paramSlider2" destination="nhs-6L-6po" id="7TR-Eo-fEj"/>
+                        <outlet property="paramSlider3" destination="HjO-bI-RAO" id="cmL-ET-S34"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="117"/>
         </scene>
     </scenes>
 </document>
