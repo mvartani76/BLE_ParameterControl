@@ -5,7 +5,7 @@ from example_advertisement import Advertisement
 from example_advertisement import register_ad_cb, register_ad_error_cb
 from example_gatt_server import Service, Characteristic
 from example_gatt_server import register_app_cb, register_app_error_cb
- 
+
 BLUEZ_SERVICE_NAME =           'org.bluez'
 DBUS_OM_IFACE =                'org.freedesktop.DBus.ObjectManager'
 LE_ADVERTISING_MANAGER_IFACE = 'org.bluez.LEAdvertisingManager1'
@@ -17,9 +17,9 @@ UART_SLIDER2_RX_CHARACTERISTIC_UUID = '6e400003-b5a3-f393-e0a9-e50e24dcca9e'
 UART_SLIDER3_RX_CHARACTERISTIC_UUID = '6e400004-b5a3-f393-e0a9-e50e24dcca9e'
 UART_BUTTON_RX_CHARACTERISTIC_UUID = '6e400005-b5a3-f393-e0a9-e50e24dcca9e'
 UART_TX_CHARACTERISTIC_UUID =  '6e400006-b5a3-f393-e0a9-e50e24dcca9e'
-LOCAL_NAME =                   'rpi-gatt-server'
+LOCAL_NAME = 'rpi-gatt-server'
 mainloop = None
- 
+
 class TxCharacteristic(Characteristic):
     def __init__(self, bus, index, service):
         Characteristic.__init__(self, bus, index, UART_TX_CHARACTERISTIC_UUID,
@@ -59,16 +59,20 @@ class RxCharacteristic(Characteristic):
                                 ['write'], service)
 
     def WriteValue(self, value, options):
-        print('remote: {}'.format(bytearray(value).decode()))
+	# convert value into UInt8
+	temp = [hex(c) for c in value]
+	int8Value = int(temp[0],0)
+	print("uuid: %s value: %s " % (self.uuid, int8Value))
+
 
 class UartService(Service):
     def __init__(self, bus, index):
         Service.__init__(self, bus, index, UART_SERVICE_UUID, True)
-	self.add_characteristic(TxCharacteristic(bus, 1, self))
-	self.add_characteristic(RxCharacteristic(bus, 2, UART_SLIDER1_RX_CHARACTERISTIC_UUID, self))
-	self.add_characteristic(RxCharacteristic(bus, 3, UART_SLIDER2_RX_CHARACTERISTIC_UUID, self))
-	self.add_characteristic(RxCharacteristic(bus, 4, UART_SLIDER3_RX_CHARACTERISTIC_UUID, self))
-	self.add_characteristic(RxCharacteristic(bus, 5, UART_BUTTON_RX_CHARACTERISTIC_UUID, self))
+	#self.add_characteristic(TxCharacteristic(bus, 1, self))
+	self.add_characteristic(RxCharacteristic(bus, 1, UART_SLIDER1_RX_CHARACTERISTIC_UUID, self))
+	self.add_characteristic(RxCharacteristic(bus, 2, UART_SLIDER2_RX_CHARACTERISTIC_UUID, self))
+	self.add_characteristic(RxCharacteristic(bus, 3, UART_SLIDER3_RX_CHARACTERISTIC_UUID, self))
+	self.add_characteristic(RxCharacteristic(bus, 4, UART_BUTTON_RX_CHARACTERISTIC_UUID, self))
 
 class Application(dbus.service.Object):
     def __init__(self, bus):
