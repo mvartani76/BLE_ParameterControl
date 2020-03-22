@@ -15,6 +15,12 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
     private var centralManager: CBCentralManager!
     private var peripheral: CBPeripheral!
 
+    // Characteristics
+    private var param1Char: CBCharacteristic?
+    private var param2Char: CBCharacteristic?
+    private var param3Char: CBCharacteristic?
+    private var paramButtonChar: CBCharacteristic?
+
     @IBOutlet var paramSlider1: UISlider!
     @IBOutlet var paramSlider2: UISlider!
     @IBOutlet var paramSlider3: UISlider!
@@ -54,6 +60,25 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
         }
     }
 
+    // Handler for disconnects
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        if peripheral == self.peripheral {
+            print("Disconnected")
+
+            paramSlider1.isEnabled = false
+            paramSlider2.isEnabled = false
+            paramSlider3.isEnabled = false
+            paramButton.isEnabled = false
+
+            self.peripheral = nil
+
+            // Start scanning again
+            print("Central scanning for", Peripheral.peripheralParamServiceUUID);
+            centralManager.scanForPeripherals(withServices: [Peripheral.peripheralParamServiceUUID],
+                                              options: [CBCentralManagerScanOptionAllowDuplicatesKey : true])
+        }
+    }
+
     // Handles discovery event
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let services = peripheral.services {
@@ -64,7 +89,8 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
                     peripheral.discoverCharacteristics([
                         Peripheral.param1CharacteristicUUID,
                         Peripheral.param2CharacteristicUUID,
-                        Peripheral.param3CharacteristicUUID], for: service)
+                        Peripheral.param3CharacteristicUUID,
+                        Peripheral.paramButtonCharacteristicUUID], for: service)
                     return
                 }
             }
@@ -77,25 +103,52 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
             for characteristic in characteristics {
                 if characteristic.uuid == Peripheral.param1CharacteristicUUID {
                     print("Param 1 characteristic found")
+                    param1Char = characteristic
+                    paramSlider1.isEnabled = true
                 } else if characteristic.uuid == Peripheral.param2CharacteristicUUID {
                     print("Param 2 characteristic found")
+                    param2Char = characteristic
+                    paramSlider2.isEnabled = true
                 } else if characteristic.uuid == Peripheral.param3CharacteristicUUID {
                     print("Param 3 characteristic found");
+                    param3Char = characteristic
+                    paramSlider3.isEnabled = true
+                } else if characteristic.uuid == Peripheral.paramButtonCharacteristicUUID {
+                    print("Param Button characteristic found");
+                    paramButtonChar = characteristic
+                    paramButton.isEnabled = true
                 }
             }
         }
     }
 
+    private func writeValueToChar( withCharacteristic characteristic: CBCharacteristic, withValue value: Data) {
+        // Check if it has the write property
+        // Still need to investigate how to send without response
+        if characteristic.properties.contains(.write) && peripheral != nil {
+            peripheral.writeValue(value, for: characteristic, type: .withResponse)
+        }
+    }
+
     @IBAction func ParamSlider1Changed(_ sender: Any) {
+        let slider:UInt8 = UInt8(paramSlider1.value)
+        print(slider)
+        print(Data([slider]))
+        writeValueToChar( withCharacteristic: param1Char!, withValue: Data([slider]))
     }
 
     @IBAction func ParamSlider2Changed(_ sender: Any) {
+        let slider:UInt8 = UInt8(paramSlider2.value)
+        writeValueToChar( withCharacteristic: param2Char!, withValue: Data([slider]))
     }
 
     @IBAction func ParamSlider3Changed(_ sender: Any) {
+        let slider:UInt8 = UInt8(paramSlider3.value)
+        writeValueToChar( withCharacteristic: param3Char!, withValue: Data([slider]))
     }
 
     @IBAction func ParamButtonChanged(_ sender: Any) {
+        writeValueToChar( withCharacteristic: paramButtonChar!, withValue: Data([UInt8(135)]))
     }
 
     override func viewDidLoad() {

@@ -11,11 +11,11 @@ import CoreBluetooth
 
 class Peripheral: NSObject {
 
-    /// MARK: - Particle LED services and charcteristics Identifiers
+    /// MARK: - Peripheral Parameter services and charcteristics Identifiers
 
-    public static let peripheralParamServiceUUID    = CBUUID.init(string: "b4250400-fb4b-4746-b2b0-93f0e61122c6")
-    public static let param1CharacteristicUUID      = CBUUID.init(string: "b4250401-fb4b-4746-b2b0-93f0e61122c6")
-    public static let param2CharacteristicUUID      = CBUUID.init(string: "b4250402-fb4b-4746-b2b0-93f0e61122c6")
-    public static let param3CharacteristicUUID      = CBUUID.init(string: "b4250403-fb4b-4746-b2b0-93f0e61122c6")
-
+    public static let peripheralParamServiceUUID    = CBUUID.init(string: "6e400001-b5a3-f393-e0a9-e50e24dcca9e")
+    public static let param1CharacteristicUUID      = CBUUID.init(string: "6e400002-b5a3-f393-e0a9-e50e24dcca9e")
+    public static let param2CharacteristicUUID      = CBUUID.init(string: "6e400003-b5a3-f393-e0a9-e50e24dcca9e")
+    public static let param3CharacteristicUUID      = CBUUID.init(string: "6e400004-b5a3-f393-e0a9-e50e24dcca9e")
+    public static let paramButtonCharacteristicUUID      = CBUUID.init(string: "6e400005-b5a3-f393-e0a9-e50e24dcca9e")
 }

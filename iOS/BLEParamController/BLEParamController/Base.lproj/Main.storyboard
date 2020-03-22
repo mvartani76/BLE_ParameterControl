@@ -39,7 +39,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XB-rA-TNe" userLabel="Slider1View">
                                         <rect key="frame" x="0.0" y="163.5" width="414" height="163.5"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4yt-ia-6hn" userLabel="HSlider1">
+                                            <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="4yt-ia-6hn" userLabel="HSlider1">
                                                 <rect key="frame" x="101.5" y="67" width="211" height="31"/>
                                                 <connections>
                                                     <action selector="ParamSlider1Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="LYq-Ja-q0Y"/>
@@ -56,7 +56,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imU-GU-VIO" userLabel="Slider2View">
                                         <rect key="frame" x="0.0" y="327" width="414" height="164"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nhs-6L-6po" userLabel="HSlider2">
+                                            <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="nhs-6L-6po" userLabel="HSlider2">
                                                 <rect key="frame" x="101.5" y="67" width="211" height="31"/>
                                                 <connections>
                                                     <action selector="ParamSlider2Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="Vrh-vY-MZn"/>
@@ -73,7 +73,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOe-kH-FcJ" userLabel="Slider3View">
                                         <rect key="frame" x="0.0" y="491" width="414" height="163.5"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="HjO-bI-RAO" userLabel="HSlider3">
+                                            <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="HjO-bI-RAO" userLabel="HSlider3">
                                                 <rect key="frame" x="101.5" y="66.5" width="211" height="31"/>
                                                 <connections>
                                                     <action selector="ParamSlider3Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="Tq8-Qr-oae"/>
@@ -90,7 +90,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ls5-Pk-Sh5" userLabel="ButtonView">
                                         <rect key="frame" x="0.0" y="654.5" width="414" height="163.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znc-0f-2BK">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znc-0f-2BK">
                                                 <rect key="frame" x="160" y="60.5" width="94" height="42"/>
                                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="26"/>
                                                 <state key="normal" title="Button"/>
