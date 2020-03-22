@@ -25,6 +25,8 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
     @IBOutlet var paramSlider2: UISlider!
     @IBOutlet var paramSlider3: UISlider!
     @IBOutlet var paramButton: UIButton!
+    @IBOutlet var backgroundGraidentView: UIStackView!
+    @IBOutlet var titleLabel: UILabel!
 
     // If we're powered on, start scanning
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -149,6 +151,32 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
 
     @IBAction func ParamButtonChanged(_ sender: Any) {
         writeValueToChar( withCharacteristic: paramButtonChar!, withValue: Data([UInt8(135)]))
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        let gradientLayer = CAGradientLayer()
+        let buttonGradientLayer = CAGradientLayer()
+
+        gradientLayer.frame = self.view.bounds
+        buttonGradientLayer.frame = paramButton.bounds
+        //gradientLayer.colors = [UIColor.yellow.cgColor, UIColor.white.cgColor]
+
+        gradientLayer.colors = [#colorLiteral(red: 0.06017230308, green: 0.03214876275, blue: 0.04932325242, alpha: 1).cgColor,
+        #colorLiteral(red: 0.2197335064, green: 0.2197335064, blue: 0.2197335064, alpha: 1).cgColor]
+        buttonGradientLayer.colors = [#colorLiteral(red: 0.7225695252, green: 0.7225695252, blue: 0.7225695252, alpha: 1).cgColor,
+        #colorLiteral(red: 0.6203079224, green: 0.6203079224, blue: 0.6203079224, alpha: 1).cgColor]
+
+        // Diagonal: top left to bottom corner.
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0) // Top left corner.
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1) // Bottom right corner.
+        buttonGradientLayer.startPoint = CGPoint(x: 0, y: 0) // Top left corner.
+        buttonGradientLayer.endPoint = CGPoint(x: 1, y: 1) // Bottom right corner.
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+
+        titleLabel.textColor = UIColor.darkGray
+        paramButton.backgroundColor = UIColor.lightGray
+        buttonGradientLayer.cornerRadius = 5
+        paramButton.layer.insertSublayer(buttonGradientLayer, at: 0)
     }
 
     override func viewDidLoad() {

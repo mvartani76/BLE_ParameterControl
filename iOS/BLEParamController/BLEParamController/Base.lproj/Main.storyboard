@@ -28,7 +28,6 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="zr7-U6-HrR" firstAttribute="centerY" secondItem="o8R-Rp-Apb" secondAttribute="centerY" id="8Px-Tu-CxM"/>
                                             <constraint firstItem="zr7-U6-HrR" firstAttribute="height" secondItem="o8R-Rp-Apb" secondAttribute="height" id="aWq-gw-Zsf"/>
@@ -46,7 +45,6 @@
                                                 </connections>
                                             </slider>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="4yt-ia-6hn" firstAttribute="width" secondItem="9XB-rA-TNe" secondAttribute="width" multiplier="0.5" id="2c8-Kw-E7D"/>
                                             <constraint firstItem="4yt-ia-6hn" firstAttribute="centerY" secondItem="9XB-rA-TNe" secondAttribute="centerY" id="RQr-7q-SWo"/>
@@ -63,7 +61,6 @@
                                                 </connections>
                                             </slider>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="nhs-6L-6po" firstAttribute="centerY" secondItem="imU-GU-VIO" secondAttribute="centerY" id="EUh-T1-K93"/>
                                             <constraint firstItem="nhs-6L-6po" firstAttribute="width" secondItem="imU-GU-VIO" secondAttribute="width" multiplier="0.5" id="Zhp-5h-5tq"/>
@@ -80,7 +77,6 @@
                                                 </connections>
                                             </slider>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="HjO-bI-RAO" firstAttribute="centerX" secondItem="qOe-kH-FcJ" secondAttribute="centerX" id="7K1-B6-jCd"/>
                                             <constraint firstItem="HjO-bI-RAO" firstAttribute="centerY" secondItem="qOe-kH-FcJ" secondAttribute="centerY" id="l6F-bp-O23"/>
@@ -91,18 +87,24 @@
                                         <rect key="frame" x="0.0" y="654.5" width="414" height="163.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znc-0f-2BK">
-                                                <rect key="frame" x="160" y="60.5" width="94" height="42"/>
+                                                <rect key="frame" x="41.5" y="16.5" width="331" height="130.5"/>
                                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="26"/>
                                                 <state key="normal" title="Button"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="ParamButtonChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4CW-cm-rHv"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="znc-0f-2BK" firstAttribute="centerY" secondItem="Ls5-Pk-Sh5" secondAttribute="centerY" id="60U-0x-DFG"/>
+                                            <constraint firstItem="znc-0f-2BK" firstAttribute="width" secondItem="Ls5-Pk-Sh5" secondAttribute="width" multiplier="0.8" id="I8U-wW-ORW"/>
                                             <constraint firstItem="znc-0f-2BK" firstAttribute="centerX" secondItem="Ls5-Pk-Sh5" secondAttribute="centerX" id="esz-VJ-e5r"/>
+                                            <constraint firstItem="znc-0f-2BK" firstAttribute="height" secondItem="Ls5-Pk-Sh5" secondAttribute="height" multiplier="0.8" id="re0-Yr-gTz"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -129,10 +131,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundGraidentView" destination="DYO-HI-3pe" id="Lsj-1E-sXU"/>
                         <outlet property="paramButton" destination="znc-0f-2BK" id="ooE-OM-StO"/>
                         <outlet property="paramSlider1" destination="4yt-ia-6hn" id="jFD-7T-aoo"/>
                         <outlet property="paramSlider2" destination="nhs-6L-6po" id="7TR-Eo-fEj"/>
                         <outlet property="paramSlider3" destination="HjO-bI-RAO" id="cmL-ET-S34"/>
+                        <outlet property="titleLabel" destination="zr7-U6-HrR" id="uoA-zA-dIq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
