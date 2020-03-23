@@ -40,6 +40,7 @@ class TxCharacteristic(Characteristic):
             return
         value = []
         for c in s:
+	    print(c)
             value.append(dbus.Byte(c.encode()))
         self.PropertiesChanged(GATT_CHRC_IFACE, {'Value': value}, [])
 
@@ -68,11 +69,11 @@ class RxCharacteristic(Characteristic):
 class UartService(Service):
     def __init__(self, bus, index):
         Service.__init__(self, bus, index, UART_SERVICE_UUID, True)
-	#self.add_characteristic(TxCharacteristic(bus, 1, self))
 	self.add_characteristic(RxCharacteristic(bus, 1, UART_SLIDER1_RX_CHARACTERISTIC_UUID, self))
 	self.add_characteristic(RxCharacteristic(bus, 2, UART_SLIDER2_RX_CHARACTERISTIC_UUID, self))
 	self.add_characteristic(RxCharacteristic(bus, 3, UART_SLIDER3_RX_CHARACTERISTIC_UUID, self))
 	self.add_characteristic(RxCharacteristic(bus, 4, UART_BUTTON_RX_CHARACTERISTIC_UUID, self))
+	self.add_characteristic(TxCharacteristic(bus, 5, self))
 
 class Application(dbus.service.Object):
     def __init__(self, bus):
