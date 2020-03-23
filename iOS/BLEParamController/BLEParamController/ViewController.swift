@@ -64,6 +64,7 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
 
     // Handler for disconnects
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+
         if peripheral == self.peripheral {
             print("Disconnected")
 
@@ -119,9 +120,27 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
                     print("Param Button characteristic found");
                     paramButtonChar = characteristic
                     paramButton.isEnabled = true
+                    paramButton.alpha = 1.0
                 }
             }
         }
+    }
+
+    func peripheral(_ peripheral: CBPeripheral,
+                    didModifyServices invalidatedServices: [CBService]) {
+        print("Services Invalidated...")
+        for service in invalidatedServices {
+            if let characteristics = service.characteristics {
+                for characteristic in characteristics {
+                        print(characteristic)
+                    }
+            }
+        }
+        paramSlider1.isEnabled = false
+        paramSlider2.isEnabled = false
+        paramSlider3.isEnabled = false
+        paramButton.isEnabled = false
+        paramButton.alpha = 0.5
     }
 
     private func writeValueToChar( withCharacteristic characteristic: CBCharacteristic, withValue value: Data) {
@@ -163,8 +182,8 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
 
         gradientLayer.colors = [#colorLiteral(red: 0.06017230308, green: 0.03214876275, blue: 0.04932325242, alpha: 1).cgColor,
         #colorLiteral(red: 0.2197335064, green: 0.2197335064, blue: 0.2197335064, alpha: 1).cgColor]
-        buttonGradientLayer.colors = [#colorLiteral(red: 0.7225695252, green: 0.7225695252, blue: 0.7225695252, alpha: 1).cgColor,
-        #colorLiteral(red: 0.6203079224, green: 0.6203079224, blue: 0.6203079224, alpha: 1).cgColor]
+        buttonGradientLayer.colors = [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor,
+        #colorLiteral(red: 0.3556107581, green: 0.3556107581, blue: 0.3556107581, alpha: 1).cgColor]
 
         // Diagonal: top left to bottom corner.
         gradientLayer.startPoint = CGPoint(x: 0, y: 0) // Top left corner.
@@ -183,6 +202,10 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         centralManager = CBCentralManager(delegate: self, queue: nil)
+
+        paramButton.setTitleColor(UIColor.black, for: .normal)
+        paramButton.setTitleColor(UIColor.darkGray, for: .disabled)
+        paramButton.alpha = 0.5
     }
 }
 
