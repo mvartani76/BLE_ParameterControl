@@ -20,6 +20,7 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
     private var param2Char: CBCharacteristic?
     private var param3Char: CBCharacteristic?
     private var paramButtonChar: CBCharacteristic?
+    private var txChar: CBCharacteristic?
 
     @IBOutlet var paramSlider1: UISlider!
     @IBOutlet var paramSlider2: UISlider!
@@ -93,7 +94,8 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
                         Peripheral.param1CharacteristicUUID,
                         Peripheral.param2CharacteristicUUID,
                         Peripheral.param3CharacteristicUUID,
-                        Peripheral.paramButtonCharacteristicUUID], for: service)
+                        Peripheral.paramButtonCharacteristicUUID,
+                        Peripheral.txCharacteristicUUID], for: service)
                     return
                 }
             }
@@ -121,11 +123,41 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
                     paramButtonChar = characteristic
                     paramButton.isEnabled = true
                     paramButton.alpha = 1.0
+                } else if characteristic.uuid == Peripheral.txCharacteristicUUID {
+                    print("Tx characteristic found")
+                    txChar = characteristic
+                    peripheral.setNotifyValue(true, for: characteristic)
                 }
             }
         }
     }
 
+    // Handle notification updates
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic,
+                    error: Error?) {
+        print("receiving data?")
+        switch characteristic.uuid {
+            case Peripheral.param1CharacteristicUUID:
+                print("Param1 value = \(String(describing: characteristic.value))")
+            case Peripheral.param2CharacteristicUUID:
+                print("Param1 value = \(String(describing: characteristic.value))")
+            case Peripheral.param3CharacteristicUUID:
+                print("Param3 value = \(String(describing: characteristic.value))")
+            case Peripheral.paramButtonCharacteristicUUID:
+                print("ParamButton value = \(String(describing: characteristic.value))")
+            case Peripheral.txCharacteristicUUID:
+                // values are coming over as bytes from the peripheral so need to convert to whatever expected data type
+                if let charString = String(bytes: characteristic.value!, encoding: .utf8) {
+                    print(charString)
+                } else {
+                    print("not a valid UTF-8 sequence")
+                }
+            default:
+                print("Unhandled Characteristic UUID: \(characteristic.uuid)")
+        }
+    }
+
+    // Handle peripheral modify services
     func peripheral(_ peripheral: CBPeripheral,
                     didModifyServices invalidatedServices: [CBService]) {
         print("Services Invalidated...")

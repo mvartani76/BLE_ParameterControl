@@ -18,4 +18,5 @@ class Peripheral: NSObject {
     public static let param2CharacteristicUUID      = CBUUID.init(string: "6e400003-b5a3-f393-e0a9-e50e24dcca9e")
     public static let param3CharacteristicUUID      = CBUUID.init(string: "6e400004-b5a3-f393-e0a9-e50e24dcca9e")
     public static let paramButtonCharacteristicUUID      = CBUUID.init(string: "6e400005-b5a3-f393-e0a9-e50e24dcca9e")
+    public static let txCharacteristicUUID      = CBUUID.init(string: "6e400006-b5a3-f393-e0a9-e50e24dcca9e")
 }
