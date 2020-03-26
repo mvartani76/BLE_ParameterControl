@@ -19,10 +19,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8R-Rp-Apb" userLabel="TitleView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="163.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="138"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLE Param Control" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zr7-U6-HrR">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="163.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="138"/>
                                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="32"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -35,11 +35,28 @@
                                             <constraint firstItem="zr7-U6-HrR" firstAttribute="width" secondItem="o8R-Rp-Apb" secondAttribute="width" id="pve-My-aj2"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cm1-Ib-6kg" userLabel="RxView">
+                                        <rect key="frame" x="0.0" y="138" width="414" height="128"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2a-o8-EGo" userLabel="RxTextLabel">
+                                                <rect key="frame" x="41.5" y="13" width="331" height="102"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="w2a-o8-EGo" firstAttribute="width" secondItem="cm1-Ib-6kg" secondAttribute="width" multiplier="0.8" id="j7k-SJ-1Gy"/>
+                                            <constraint firstItem="w2a-o8-EGo" firstAttribute="centerX" secondItem="cm1-Ib-6kg" secondAttribute="centerX" id="k3L-Gd-iE9"/>
+                                            <constraint firstItem="w2a-o8-EGo" firstAttribute="centerY" secondItem="cm1-Ib-6kg" secondAttribute="centerY" id="pPq-s9-tcR"/>
+                                            <constraint firstItem="w2a-o8-EGo" firstAttribute="height" secondItem="cm1-Ib-6kg" secondAttribute="height" multiplier="0.8" id="uvB-u4-TR0"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XB-rA-TNe" userLabel="Slider1View">
-                                        <rect key="frame" x="0.0" y="163.5" width="414" height="163.5"/>
+                                        <rect key="frame" x="0.0" y="266" width="414" height="138"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="4yt-ia-6hn" userLabel="HSlider1">
-                                                <rect key="frame" x="101.5" y="67" width="211" height="31"/>
+                                                <rect key="frame" x="101.5" y="54" width="211" height="31"/>
                                                 <connections>
                                                     <action selector="ParamSlider1Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="LYq-Ja-q0Y"/>
                                                 </connections>
@@ -52,10 +69,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imU-GU-VIO" userLabel="Slider2View">
-                                        <rect key="frame" x="0.0" y="327" width="414" height="164"/>
+                                        <rect key="frame" x="0.0" y="404" width="414" height="138"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="nhs-6L-6po" userLabel="HSlider2">
-                                                <rect key="frame" x="101.5" y="67" width="211" height="31"/>
+                                                <rect key="frame" x="101.5" y="54" width="211" height="31"/>
                                                 <connections>
                                                     <action selector="ParamSlider2Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="Vrh-vY-MZn"/>
                                                 </connections>
@@ -68,10 +85,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOe-kH-FcJ" userLabel="Slider3View">
-                                        <rect key="frame" x="0.0" y="491" width="414" height="163.5"/>
+                                        <rect key="frame" x="0.0" y="542" width="414" height="138"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="HjO-bI-RAO" userLabel="HSlider3">
-                                                <rect key="frame" x="101.5" y="66.5" width="211" height="31"/>
+                                                <rect key="frame" x="101.5" y="54" width="211" height="31"/>
                                                 <connections>
                                                     <action selector="ParamSlider3Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="Tq8-Qr-oae"/>
                                                 </connections>
@@ -84,10 +101,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ls5-Pk-Sh5" userLabel="ButtonView">
-                                        <rect key="frame" x="0.0" y="654.5" width="414" height="163.5"/>
+                                        <rect key="frame" x="0.0" y="680" width="414" height="138"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znc-0f-2BK">
-                                                <rect key="frame" x="41.5" y="16.5" width="331" height="130.5"/>
+                                                <rect key="frame" x="41.5" y="14" width="331" height="110"/>
                                                 <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="26"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -112,10 +129,12 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="9XB-rA-TNe" firstAttribute="width" secondItem="DYO-HI-3pe" secondAttribute="width" id="5mK-q7-lWm"/>
+                                    <constraint firstItem="cm1-Ib-6kg" firstAttribute="height" secondItem="9XB-rA-TNe" secondAttribute="height" multiplier="0.927536" id="9AO-uw-Nj5"/>
                                     <constraint firstItem="qOe-kH-FcJ" firstAttribute="width" secondItem="DYO-HI-3pe" secondAttribute="width" id="Pq7-u6-Y3i"/>
                                     <constraint firstItem="o8R-Rp-Apb" firstAttribute="width" secondItem="DYO-HI-3pe" secondAttribute="width" id="TIu-Tv-cUm"/>
                                     <constraint firstItem="o8R-Rp-Apb" firstAttribute="height" secondItem="9XB-rA-TNe" secondAttribute="height" id="fBv-Vh-l9k"/>
                                     <constraint firstItem="Ls5-Pk-Sh5" firstAttribute="height" secondItem="9XB-rA-TNe" secondAttribute="height" id="fwb-jH-2AZ"/>
+                                    <constraint firstItem="cm1-Ib-6kg" firstAttribute="width" secondItem="DYO-HI-3pe" secondAttribute="width" id="kQO-rq-DdU"/>
                                     <constraint firstItem="imU-GU-VIO" firstAttribute="width" secondItem="DYO-HI-3pe" secondAttribute="width" id="mpU-cs-yRj"/>
                                     <constraint firstItem="imU-GU-VIO" firstAttribute="height" secondItem="9XB-rA-TNe" secondAttribute="height" id="rz0-7C-SP2"/>
                                     <constraint firstItem="Ls5-Pk-Sh5" firstAttribute="width" secondItem="DYO-HI-3pe" secondAttribute="width" id="wxO-En-BGO"/>
@@ -138,6 +157,7 @@
                         <outlet property="paramSlider1" destination="4yt-ia-6hn" id="jFD-7T-aoo"/>
                         <outlet property="paramSlider2" destination="nhs-6L-6po" id="7TR-Eo-fEj"/>
                         <outlet property="paramSlider3" destination="HjO-bI-RAO" id="cmL-ET-S34"/>
+                        <outlet property="rxTextLabel" destination="w2a-o8-EGo" id="yeZ-OP-wTt"/>
                         <outlet property="titleLabel" destination="zr7-U6-HrR" id="uoA-zA-dIq"/>
                     </connections>
                 </viewController>

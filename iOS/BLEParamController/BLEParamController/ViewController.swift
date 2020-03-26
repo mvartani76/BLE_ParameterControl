@@ -27,7 +27,9 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
     @IBOutlet var paramSlider3: UISlider!
     @IBOutlet var paramButton: UIButton!
     @IBOutlet var backgroundGraidentView: UIStackView!
+    @IBOutlet var rxTextLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
+    var charArray: [String] = [""]
 
     // If we're powered on, start scanning
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -126,6 +128,8 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
                 } else if characteristic.uuid == Peripheral.txCharacteristicUUID {
                     print("Tx characteristic found")
                     txChar = characteristic
+                    rxTextLabel.isEnabled = true
+                    rxTextLabel.alpha = 1.0
                     peripheral.setNotifyValue(true, for: characteristic)
                 }
             }
@@ -135,7 +139,6 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
     // Handle notification updates
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic,
                     error: Error?) {
-        print("receiving data?")
         switch characteristic.uuid {
             case Peripheral.param1CharacteristicUUID:
                 print("Param1 value = \(String(describing: characteristic.value))")
@@ -147,8 +150,14 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
                 print("ParamButton value = \(String(describing: characteristic.value))")
             case Peripheral.txCharacteristicUUID:
                 // values are coming over as bytes from the peripheral so need to convert to whatever expected data type
-                if let charString = String(bytes: characteristic.value!, encoding: .utf8) {
-                    print(charString)
+                if let charStringTmp = String(bytes: characteristic.value!, encoding: .utf8) {
+                    charArray.append(charStringTmp)
+                    if charArray.count >= 5 {
+                        charArray.remove(at: 0)
+                    }
+                    let stringPrint = charArray.joined(separator: "")
+
+                    rxTextLabel.text = stringPrint
                 } else {
                     print("not a valid UTF-8 sequence")
                 }
@@ -173,6 +182,8 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
         paramSlider3.isEnabled = false
         paramButton.isEnabled = false
         paramButton.alpha = 0.5
+        rxTextLabel.isEnabled = false
+        rxTextLabel.alpha = 0.5
     }
 
     private func writeValueToChar( withCharacteristic characteristic: CBCharacteristic, withValue value: Data) {
@@ -228,6 +239,13 @@ class ViewController: UIViewController, CBPeripheralDelegate, CBCentralManagerDe
         paramButton.backgroundColor = UIColor.lightGray
         buttonGradientLayer.cornerRadius = 5
         paramButton.layer.insertSublayer(buttonGradientLayer, at: 0)
+        rxTextLabel.backgroundColor = UIColor.clear
+        rxTextLabel.isOpaque = false
+        rxTextLabel.layer.borderColor = UIColor.lightGray.cgColor
+        rxTextLabel.layer.borderWidth = 1
+        rxTextLabel.layer.cornerRadius = 5
+        rxTextLabel.alpha = 0.5
+        charArray = [""]
     }
 
     override func viewDidLoad() {
