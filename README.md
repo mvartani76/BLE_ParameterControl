@@ -8,3 +8,4 @@ Collection of Code to Control Parameters using BLE
 - https://www.bluetooth.com/blog/bluez-on-raspberry-pi-update/
 - https://scribles.net/creating-ble-gatt-server-uart-service-on-raspberry-pi/
 - https://mirrors.edge.kernel.org/pub/linux/bluetooth/
+- http://www.haigarmen.com/updating-bluez-on-rpi/
